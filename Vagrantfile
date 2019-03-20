@@ -6,31 +6,31 @@ Vagrant.require_version ">= 2.2.4"
 # TODO: Add MAC, IP Address options here; nil default (Auto, DHCP, respectively)
 boxes = [
   {
-    index: 1
+    index: 1,
     name: "10136-17G66",
     compat_xcodes:
       ["9.4.1", "10.0", "10.1"]
   },
   {
-    index: 2
+    index: 2,
     name: "1014-18A384a",
     compat_xcodes:
       ["9.4.1", "10.0", "10.1"]
   },
   {
-    index: 3
+    index: 3,
     name: "10142-18C54",
     compat_xcodes:
       ["9.4.1", "10.0", "10.1"]
   },
   {
-    index: 4
+    index: 4,
     name: "10143-18D109",
     compat_xcodes:
       ["9.4.1", "10.0", "10.1"]
   },
   {
-    index: 5
+    index: 5,
     name: "10144-18E194e",
     compat_xcodes:
       ["9.4.1", "10.0", "10.1"]
@@ -38,19 +38,19 @@ boxes = [
 ]
 
 def ssh_port_gen(box_index)
-  2200 + box_index
+  2200 + box_index.to_i
 end
 
 boxes.each do |macinbox|
   Vagrant.configure(2) do |config|
     # Name of the Vagrant machine (as it appears in `vagrant status`)
-    config.vm.define "macos-#{macinbox['name']}"
+    config.vm.define "macos-#{macinbox[:name]}"
 
     # Name of Vagrant box that the machine should be brought up against
-    config.vm.box = "macos-#{macinbox['name']}"
+    config.vm.box = "macos-#{macinbox[:name]}"
 
     # Name for the machine's HostName, LocalHostName, and ComputerName
-    config.vm.hostname = "macos-#{macinbox['name']}"
+    config.vm.hostname = "macos-#{macinbox[:name]}"
 
     # Specified MAC address for the given machine
     # config.vm.base_mac = #{macinbox['mac_address']}
@@ -88,7 +88,7 @@ boxes.each do |macinbox|
       v.gui = true
 
       # Name of machine as it appears in VirtualBox
-      v.name = "macos-#{macinbox['name']}"
+      v.name = "macos-#{macinbox[:name]}"
     end
   end
 end

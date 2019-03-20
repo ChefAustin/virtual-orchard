@@ -1,5 +1,5 @@
 # Fend off compatibility issues arising from differing Vagrant versions
-Vagrant.require_version ">= 2.2.4"
+Vagrant.require_version '>= 2.2.4'
 
 # Keep in mind compatibilty when associating Xcode versions to a macOS release
 # https://en.wikipedia.org/wiki/Xcode#Version_comparison_table
@@ -34,7 +34,7 @@ boxes = [
     name: '10144-18E194e',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1']
-  },
+  }, # rubocop:disable Style/TrailingCommaInArrayLiteral
 ]
 
 def ssh_port_gen(box_index)
@@ -70,13 +70,15 @@ boxes.each do |macinbox|
     config.vm.forward_port 22, ssh_port_gen(macinbox['index']), auto: true
 
     # File-based provisioning tasks
+    # TODO: See if file can be accessed via synced_folder instead of pushing
     config.vm.provision 'file', source: "~/.vagrant.d/provisioning/CommandLineToolsmacOSMojaveVersion10.14.pkg", destination: "$HOME/CommandLineToolsmacOSMojaveVersion10.14.pkg"
 
     # Shell-based provisioning tasks
     config.vm.provision 'shell', path: 'xcodeclitools_install.sh'
     config.vm.provision 'shell', path: 'homebrew_install.sh', privileged: false
 
-    # Whether or not the machine will check for updates (upon each `vagrant up` to the configured box
+    # Whether or not the machine will check for updates (upon each `vagrant up`
+    # to the configured box
     config.vm.box_check_update = false
 
     # Volume mount for file-sharing between host and guest

@@ -7,33 +7,33 @@ Vagrant.require_version ">= 2.2.4"
 boxes = [
   {
     index: 1,
-    name: "10136-17G66",
+    name: '10136-17G66',
     compat_xcodes:
-      ["9.4.1", "10.0", "10.1"]
+      ['9.4.1', '10.0', '10.1']
   },
   {
     index: 2,
-    name: "1014-18A384a",
+    name: '1014-18A384a',
     compat_xcodes:
-      ["9.4.1", "10.0", "10.1"]
+      ['9.4.1', '10.0', '10.1']
   },
   {
     index: 3,
-    name: "10142-18C54",
+    name: '10142-18C54',
     compat_xcodes:
-      ["9.4.1", "10.0", "10.1"]
+      ['9.4.1', '10.0', '10.1']
   },
   {
     index: 4,
-    name: "10143-18D109",
+    name: '10143-18D109',
     compat_xcodes:
-      ["9.4.1", "10.0", "10.1"]
+      ['9.4.1', '10.0', '10.1']
   },
   {
     index: 5,
-    name: "10144-18E194e",
+    name: '10144-18E194e',
     compat_xcodes:
-      ["9.4.1", "10.0", "10.1"]
+      ['9.4.1', '10.0', '10.1']
   },
 ]
 
@@ -67,23 +67,23 @@ boxes.each do |macinbox|
     # config.vm.communicator = "ssh"
 
     # Dynamic vm:host ssh port assignment (avoid concurrent testing conflicts)
-    config.vm.forward_port 22, ssh_port_gen(macinbox['index']), :auto => true
+    config.vm.forward_port 22, ssh_port_gen(macinbox['index']), auto: true
 
     # File-based provisioning tasks
-    config.vm.provision "file", source: "~/.vagrant.d/provisioning/CommandLineToolsmacOSMojaveVersion10.14.pkg", destination: "$HOME/CommandLineToolsmacOSMojaveVersion10.14.pkg"
+    config.vm.provision 'file', source: "~/.vagrant.d/provisioning/CommandLineToolsmacOSMojaveVersion10.14.pkg", destination: "$HOME/CommandLineToolsmacOSMojaveVersion10.14.pkg"
 
     # Shell-based provisioning tasks
-    config.vm.provision "shell", path: "xcodeclitools_install.sh"
-    config.vm.provision "shell", path: "homebrew_install.sh", privileged: false
+    config.vm.provision 'shell', path: 'xcodeclitools_install.sh'
+    config.vm.provision 'shell', path: 'homebrew_install.sh', privileged: false
 
     # Whether or not the machine will check for updates (upon each `vagrant up` to the configured box
     config.vm.box_check_update = false
 
     # Volume mount for file-sharing between host and guest
-    config.vm.synced_folder ".", "/vagrant", disabled: true
+    config.vm.synced_folder '.', '/vagrant', disabled: true
 
     # Provider-specific configurations
-    config.vm.provider "virtualbox" do |v|
+    config.vm.provider 'virtualbox' do |v|
       # Specify whether to enable a GUI for the machine being provisioned
       v.gui = true
 

@@ -1,17 +1,6 @@
 # Fend off compatibility issues arising from differing Vagrant versions
 Vagrant.require_version ">= 2.2.4"
 
-#################
-# Notable Links #
-#################
-# http://bertvv.github.io/notes-to-self/2015/10/05/one-vagrantfile-to-rule-them-all/
-# https://gist.github.com/dlutzy/2469037
-# https://www.vagrantup.com/docs/vagrantfile/tips.html
-# https://www.vagrantup.com/docs/provisioning/shell.html
-#
-#
-#
-
 # Keep in mind compatibilty when associating Xcode versions to a macOS release
 # https://en.wikipedia.org/wiki/Xcode#Version_comparison_table
 # TODO: Add MAC, IP Address options here; nil default (Auto, DHCP, respectively)

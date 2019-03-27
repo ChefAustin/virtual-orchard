@@ -1,43 +1,63 @@
+# frozen_string_literal: true
+
 # Fend off compatibility issues arising from differing Vagrant versions
 Vagrant.require_version '>= 2.2.4'
 
 # Keep in mind compatibilty when associating Xcode versions to a macOS release
 # https://en.wikipedia.org/wiki/Xcode#Version_comparison_table
-# TODO: Add MAC, IP Address options here; nil default (Auto, DHCP, respectively)
+# TODO: Move this to its own file
 boxes = [
   {
     index: 1,
     name: '10136-17G66',
+    mac_address: '00039366AEE1',
+    ip_address: '192.168.32.11',
+    serial_number: 'C02AA01LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1']
   },
   {
     index: 2,
     name: '1014-18A384a',
+    mac_address: '00039314DEA7',
+    ip_address: '192.168.32.12',
+    serial_number: 'C02AA02LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1']
   },
   {
     index: 3,
     name: '10142-18C54',
+    mac_address: '0003939FAEF8',
+    ip_address: '192.168.32.13',
+    serial_number: 'C02AA03LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1']
   },
   {
     index: 4,
     name: '10143-18D109',
+    mac_address: '00039322CC81',
+    ip_address: '192.168.32.14',
+    serial_number: 'C02AA04LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1', '10.2']
   },
   {
     index: 5,
     name: '10144-18E194e',
+    mac_address: '000393590F18',
+    ip_address: '192.168.32.15',
+    serial_number: 'C02AA05LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1', '10.2']
   },
   {
     index: 6,
     name: '10144-18E226',
+    mac_address: '000393FD3813',
+    ip_address: '192.168.32.16',
+    serial_number: 'C02AA06LHTDG',
     compat_xcodes:
       ['9.4.1', '10.0', '10.1', '10.2']
   }, # rubocop:disable Style/TrailingCommaInArrayLiteral
@@ -59,10 +79,10 @@ boxes.each do |macinbox|
     config.vm.hostname = "macos-#{macinbox[:name]}"
 
     # Specified MAC address for the given machine
-    # config.vm.base_mac = #{macinbox['mac_address']}
+    config.vm.base_mac = macinbox[:mac_address].to_s
 
     # Specified IP address for the default NAT interface
-    # config.vm.base_address = #{macinbox['ip_address']}
+    config.vm.base_address = macinbox[:ip_address].to_s
 
     # Network settings for the given machine
     # See: https://www.vagrantup.com/docs/networking/
@@ -75,7 +95,7 @@ boxes.each do |macinbox|
     # Dynamic vm:host ssh port assignment (avoid concurrent testing conflicts)
     config.vm.forward_port 22, ssh_port_gen(macinbox['index']), auto: true
 
-    # File-based provisioning tasks
+    # File-based provisioning taskss
     # TODO: See if file can be accessed via synced_folder instead of pushing
     config.vm.provision 'file', source: "~/.vagrant.d/provisioning/CommandLineToolsmacOSMojaveVersion10.14.pkg", destination: "$HOME/CommandLineToolsmacOSMojaveVersion10.14.pkg"
 

@@ -27,13 +27,19 @@ boxes = [
     index: 4,
     name: '10143-18D109',
     compat_xcodes:
-      ['9.4.1', '10.0', '10.1']
+      ['9.4.1', '10.0', '10.1', '10.2']
   },
   {
     index: 5,
     name: '10144-18E194e',
     compat_xcodes:
-      ['9.4.1', '10.0', '10.1']
+      ['9.4.1', '10.0', '10.1', '10.2']
+  },
+  {
+    index: 6,
+    name: '10144-18E226',
+    compat_xcodes:
+      ['9.4.1', '10.0', '10.1', '10.2']
   }, # rubocop:disable Style/TrailingCommaInArrayLiteral
 ]
 

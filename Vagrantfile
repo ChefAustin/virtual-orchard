@@ -97,6 +97,7 @@ boxes.each do |macinbox|
 
     # File-based provisioning taskss
     # TODO: See if file can be accessed via synced_folder instead of pushing
+    # TODO: Iterate over each `compat_xcodes` version to spawn new box
     config.vm.provision 'file', source: "~/.vagrant.d/provisioning/CommandLineToolsmacOSMojaveVersion10.14.pkg", destination: "$HOME/CommandLineToolsmacOSMojaveVersion10.14.pkg"
 
     # Shell-based provisioning tasks

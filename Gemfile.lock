@@ -1,14 +1,44 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ast (2.4.0)
+    builder (3.2.3)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     ffi (1.10.0)
     iniparse (1.4.4)
+    jaro_winkler (1.5.2)
+    json (2.2.0)
     macinbox (3.3.0)
+    mini_portile2 (2.4.0)
+    nokogiri (1.10.2)
+      mini_portile2 (~> 2.4.0)
+    optimist (3.0.0)
     overcommit (0.47.0)
       childprocess (~> 0.6, >= 0.6.3)
       iniparse (~> 1.4)
+    parallel (1.17.0)
+    parser (2.6.2.1)
+      ast (~> 2.4.0)
+    psych (3.1.0)
+    rainbow (3.0.0)
+    rbvmomi (2.1.0)
+      builder (~> 3.0)
+      json (>= 1.8)
+      nokogiri (~> 1.5)
+      optimist (~> 3.0)
+    rubocop (0.67.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      psych (>= 3.1.0)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.6)
+    rubocop-performance (1.1.0)
+      rubocop (>= 0.67.0)
+    ruby-progressbar (1.10.0)
+    unicode-display_width (1.5.0)
 
 PLATFORMS
   ruby
@@ -16,6 +46,9 @@ PLATFORMS
 DEPENDENCIES
   macinbox
   overcommit
+  rbvmomi
+  rubocop
+  rubocop-performance
 
 BUNDLED WITH
    1.17.2

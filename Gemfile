@@ -3,4 +3,10 @@
 source 'https://rubygems.org'
 
 gem 'macinbox'
-gem 'overcommit'
+gem 'rbvmomi'
+
+group :development, :test do
+  gem 'overcommit'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+end

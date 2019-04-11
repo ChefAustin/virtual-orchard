@@ -9,4 +9,5 @@ group :development, :test do
   gem 'overcommit'
   gem 'rubocop'
   gem 'rubocop-performance'
+  gem 'fasterer'
 end

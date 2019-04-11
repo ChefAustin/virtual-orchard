@@ -20,6 +20,8 @@ PreCommit:
     enabled: true
   RuboCop:
     enabled: true
+    quiet: false
+    on_warn: fail
 #
 #  TrailingWhitespace:
 #    enabled: true

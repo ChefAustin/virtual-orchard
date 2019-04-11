@@ -16,6 +16,8 @@
 # Uncomment the following lines to make the configuration take effect.
 
 PreCommit:
+  Brakeman:
+    enabled: true
   Fasterer:
     enabled: true
   RuboCop:

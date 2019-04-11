@@ -22,6 +22,7 @@ PreCommit:
     enabled: true
     quiet: false
     on_warn: fail
+#    command: ['bundle', 'exec', 'rubocop']
 #
 #  TrailingWhitespace:
 #    enabled: true

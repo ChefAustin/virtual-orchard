@@ -6,8 +6,9 @@ gem 'macinbox'
 gem 'rbvmomi'
 
 group :development, :test do
+  gem 'brakeman'
+  gem 'fasterer'
   gem 'overcommit'
   gem 'rubocop'
   gem 'rubocop-performance'
-  gem 'fasterer'
 end
